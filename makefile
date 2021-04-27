@@ -1,7 +1,5 @@
 all: sort generatorInt generatorStr
-	#make sort
-	#make generatorInt
-	#make generatorStr
+
 sort: main.c mergeSort.o swap.o quickSort.o heapSort.o
 	gcc -g -Wall -o sort swap.o mergeSort.o quickSort.o heapSort.o main.c
 

@@ -1,7 +1,10 @@
 #include "mergeSort.h"
 #include "quickSort.h"
 #include "heapSort.h"
-#include<string.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/time.h>
 #define MaxSize 1000000
 #define MaxLine 105
 
@@ -50,43 +53,61 @@ int main(int argc, char *argv[]){
 	if(argc != 3){
 		helpmessage();
 	}else{
+		struct  timeval start;
+		struct  timeval end;
+		unsigned long diff;
 		if(strcmp(argv[2], "heapSort") == 0){
 			if(strcmp(argv[1], "-i") == 0){
 				int *A ;
 				int n = inputInt(&A);
+				gettimeofday(&start, NULL);
 				heapSortInt(A,n);
-				outputInt(A,n);
+				gettimeofday(&end, NULL);
+				//outputInt(A,n);
 			}else{
 				char **A;
 				int n = inputStr(&A);
+				gettimeofday(&start, NULL);
 				heapSortStr(A,n);
-				outputStr(A,n);
+				gettimeofday(&end, NULL);
+				//outputStr(A,n);
 			}
 		}else if(strcmp(argv[2], "quickSort") == 0){
 			if(strcmp(argv[1], "-i") == 0){
 				int *A ;
 				int n = inputInt(&A);
+				gettimeofday(&start, NULL);
 				quickSortInt(A,n);
-				outputInt(A,n);
+				gettimeofday(&end, NULL);
+				//outputInt(A,n);
 			}else{
 				char **A;
 				int n = inputStr(&A);
+				gettimeofday(&start, NULL);
 				quickSortStr(A,n);
-				outputStr(A,n);
+				gettimeofday(&end, NULL);
+				//outputStr(A,n);
 			}
 		}else{
 			if(strcmp(argv[1], "-i") == 0){
 				int *A ;
 				int n = inputInt(&A);
+				gettimeofday(&start, NULL);
 				mergeSortInt(A,n);
-				outputInt(A,n);
+				gettimeofday(&end, NULL);
+				//outputInt(A,n);
 			}else{
 				char **A;
 				int n = inputStr(&A);
+				gettimeofday(&start, NULL);
 				mergeSortStr(A,n);
-				outputStr(A,n);
+				gettimeofday(&end, NULL);
+				//outputStr(A,n);
 			}
 		}
+
+    		diff = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;     // 實際的時間差
+    		printf("Sorting performance %ld us (equal %f sec)\n", diff, diff / 1000000.0);
 	}	
 	return 0;
 }
