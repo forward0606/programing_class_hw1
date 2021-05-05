@@ -4,11 +4,17 @@
 (以三種演算法)
 
 make 後可使用 ./sort 加上以下參數，做由stdin input 的排序
+
 -s heapSort
+
 -i heapSort
+
 -s quickSort
+
 -i quickSort
+
 -s mergeSort
+
 -i mergeSort
 
 ex. ./sort -s heapSort 
